@@ -8,7 +8,7 @@ const ViewArea = (props: Props) => {
   return (
     <Box
       sx={{
-        mt: 4,
+        px: 1,
         width: 300,
         height: 300,
         backgroundColor: "#e8eaf6",
@@ -18,8 +18,14 @@ const ViewArea = (props: Props) => {
         },
       }}
     >
-      {text}
-      {accuracy}
+      {/* objectの展開 */}
+      {Object.entries(props).map(([key, value]) => {
+        return (
+          <div key={key}>
+            {key}:{value}
+          </div>
+        );
+      })}
     </Box>
   );
 };
