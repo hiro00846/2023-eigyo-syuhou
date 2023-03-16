@@ -11,8 +11,12 @@ function App() {
   const [text, setText] = useState<string>("");
   // ラジオボタン周りのパラメータ
   const [accuracy, setAccuracy] = useState<string>("");
+  // セレクター周りのパラメータ
   const [selectedItem, setSelectedItem] = useState("");
   const accuracyArray = ["AB", "C", "D1", "D2"];
+  // オートコンプリートのパラメータ（型はひとまずany）
+  const [options, setOptions] = useState<any>([]);
+  const [selectedValue, setSelectedValue] = useState<any>(null);
 
   return (
     <Box>
@@ -33,7 +37,13 @@ function App() {
               selectedItem={selectedItem}
               setSelectedItem={setSelectedItem}
             />
-            <AutocompleteParts />
+            <AutocompleteParts
+              options={options}
+              setOptions={setOptions}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue}
+              label="スポンサー名"
+            />
           </div>
         </Grid>
         <Grid item xs={12} md={8}>
@@ -42,6 +52,7 @@ function App() {
               text={text}
               accuracy={accuracy}
               selectedItem={selectedItem}
+              selectedValue={selectedValue}
             />
           </div>
         </Grid>
