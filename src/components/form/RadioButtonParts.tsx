@@ -3,14 +3,17 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { keyframes } from "@emotion/react";
 
 type Props = {
   setAccuracy: (accuracy: string) => void;
   accuracyArray: string[];
+  defaultValue: string;
 };
 
 export const RadioButtonParts = (props: Props) => {
-  const { setAccuracy, accuracyArray } = props;
+  console.log(props);
+  const { setAccuracy, accuracyArray, defaultValue } = props;
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.value);
     setAccuracy(event.target.value);
@@ -25,8 +28,18 @@ export const RadioButtonParts = (props: Props) => {
           name="row-radio-buttons-group"
           onChange={handleRadioChange}
         >
+          {/* defaultValueを入れる */}
+
           {accuracyArray.map((accuracy) => {
-            return (
+            return defaultValue === accuracy ? (
+              <FormControlLabel
+                key={accuracy}
+                value={accuracy}
+                defaultValue={defaultValue}
+                control={<Radio />}
+                label={accuracy}
+              />
+            ) : (
               <FormControlLabel
                 key={accuracy}
                 value={accuracy}

@@ -5,6 +5,7 @@ import { RadioButtonParts } from "./components/form/RadioButtonParts";
 import { InputParts } from "./components/form/InputParts";
 import { Box, Grid, Typography } from "@mui/material";
 import { SelectParts } from "./components/form/SelectParts";
+import { AutocompleteParts } from "./components/form/AutoCompleteParts";
 
 function App() {
   const [text, setText] = useState<string>("");
@@ -26,11 +27,13 @@ function App() {
             <RadioButtonParts
               accuracyArray={accuracyArray}
               setAccuracy={setAccuracy}
+              defaultValue={accuracyArray[0]}
             />
             <SelectParts
               selectedItem={selectedItem}
               setSelectedItem={setSelectedItem}
             />
+            <AutocompleteParts />
           </div>
         </Grid>
         <Grid item xs={12} md={8}>
