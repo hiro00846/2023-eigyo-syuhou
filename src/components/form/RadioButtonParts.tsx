@@ -6,17 +6,18 @@ import FormLabel from "@mui/material/FormLabel";
 
 type Props = {
   setAccuracy: (accuracy: string) => void;
+  accuracyArray: string[];
 };
 
 export const RadioButtonParts = (props: Props) => {
-  const { setAccuracy } = props;
+  const { setAccuracy, accuracyArray } = props;
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.value);
     setAccuracy(event.target.value);
   };
   return (
     <>
-      <FormControl>
+      <FormControl style={{ marginTop: 20 }}>
         <FormLabel id="demo-row-radio-buttons-group-label">確度</FormLabel>
         <RadioGroup
           row
@@ -24,13 +25,18 @@ export const RadioButtonParts = (props: Props) => {
           name="row-radio-buttons-group"
           onChange={handleRadioChange}
         >
-          <FormControlLabel value="AB" control={<Radio />} label="AB" />
-          <FormControlLabel value="C" control={<Radio />} label="C" />
-          <FormControlLabel value="D1" control={<Radio />} label="D1" />
-          <FormControlLabel value="D2" control={<Radio />} label="D2" />
+          {accuracyArray.map((accuracy) => {
+            return (
+              <FormControlLabel
+                key={accuracy}
+                value={accuracy}
+                control={<Radio />}
+                label={accuracy}
+              />
+            );
+          })}
         </RadioGroup>
       </FormControl>
-      <p>選択中：</p>
     </>
   );
 };

@@ -1,37 +1,35 @@
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import * as React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 type Props = {
-  setAccuracy: (accuracy: string) => void;
+  setSelectedItem: (selectedItem: string) => void;
+  selectedItem: string;
 };
+export const SelectParts = (props: Props) => {
+  const { selectedItem, setSelectedItem } = props;
 
-export const RadioButtonParts = (props: Props) => {
-  const { setAccuracy } = props;
-  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
-    setAccuracy(event.target.value);
+  const handleChange = (event: SelectChangeEvent) => {
+    setSelectedItem(event.target.value as string);
   };
+
   return (
-    <>
-      <FormControl>
-        <FormLabel id="demo-row-radio-buttons-group-label">確度</FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="row-radio-buttons-group"
-          onChange={handleRadioChange}
-        >
-          <FormControlLabel value="AB" control={<Radio />} label="AB" />
-          <FormControlLabel value="C" control={<Radio />} label="C" />
-          <FormControlLabel value="D1" control={<Radio />} label="D1" />
-          <FormControlLabel value="D2" control={<Radio />} label="D2" />
-        </RadioGroup>
-      </FormControl>
-      <p>選択中：</p>
-    </>
+    <FormControl fullWidth style={{ marginTop: 20 }}>
+      <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={selectedItem}
+        label="Age"
+        onChange={handleChange}
+        style={{ width: 300 }}
+      >
+        <MenuItem value={10}>Ten</MenuItem>
+        <MenuItem value={20}>Twenty</MenuItem>
+        <MenuItem value={30}>Thirty</MenuItem>
+      </Select>
+    </FormControl>
   );
 };
 

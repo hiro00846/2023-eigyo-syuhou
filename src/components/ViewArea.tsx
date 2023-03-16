@@ -2,9 +2,10 @@ import { Box } from "@mui/system";
 type Props = {
   text: string;
   accuracy: string;
+  selectedItem: string;
 };
 const ViewArea = (props: Props) => {
-  const { text, accuracy } = props;
+  // const { text, accuracy } = props;
   return (
     <Box
       sx={{
