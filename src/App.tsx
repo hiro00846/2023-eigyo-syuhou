@@ -7,6 +7,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { SelectParts } from "./components/form/SelectParts";
 import { AutocompleteParts } from "./components/form/AutoCompleteParts";
 import { CheckBoxParts } from "./components/form/CheckBoxParts";
+import { TextAreaParts } from "./components/form/TextAreaParts";
 
 function App() {
   const [text, setText] = useState<string>("");
@@ -58,6 +59,7 @@ function App() {
               initCheckedArray={initCheckedArray}
               setCheckedArray={setCheckedArray}
             />
+            <TextAreaParts />
           </div>
         </Grid>
         <Grid item xs={12} md={8}>

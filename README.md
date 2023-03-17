@@ -23,3 +23,7 @@
 * 内容（select）
 
 - コメント（textArea）
+
+# 参考サイト
+
+https://qiita.com/teradonburi/items/94e16ddac481a01f210e
