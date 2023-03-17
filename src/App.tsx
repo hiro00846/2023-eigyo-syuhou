@@ -6,6 +6,7 @@ import { InputParts } from "./components/form/InputParts";
 import { Box, Grid, Typography } from "@mui/material";
 import { SelectParts } from "./components/form/SelectParts";
 import { AutocompleteParts } from "./components/form/AutoCompleteParts";
+import { CheckBoxParts } from "./components/form/CheckBoxParts";
 
 function App() {
   const [text, setText] = useState<string>("");
@@ -17,6 +18,14 @@ function App() {
   // オートコンプリートのパラメータ（型はひとまずany）
   const [options, setOptions] = useState<any>([]);
   const [selectedValue, setSelectedValue] = useState<any>(null);
+  // チェックボックスのパラメータ
+  const initCheckedArray = [
+    { id: 1, value: "担当者1", checked: true },
+    { id: 2, value: "担当者2", checked: false },
+    { id: 3, value: "担当者3", checked: true },
+    { id: 4, value: "担当者4", checked: true },
+  ];
+  const [checkedArray, setCheckedArray] = useState(initCheckedArray);
 
   return (
     <Box>
@@ -44,6 +53,11 @@ function App() {
               setSelectedValue={setSelectedValue}
               label="スポンサー名"
             />
+            <CheckBoxParts
+              checkedArray={checkedArray}
+              initCheckedArray={initCheckedArray}
+              setCheckedArray={setCheckedArray}
+            />
           </div>
         </Grid>
         <Grid item xs={12} md={8}>
@@ -53,6 +67,7 @@ function App() {
               accuracy={accuracy}
               selectedItem={selectedItem}
               selectedValue={selectedValue}
+              checkedArray={checkedArray}
             />
           </div>
         </Grid>

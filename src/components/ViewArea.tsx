@@ -4,6 +4,7 @@ type Props = {
   accuracy: string;
   selectedItem: string;
   selectedValue: string;
+  checkedArray: any;
 };
 const ViewArea = (props: Props) => {
   // const { text, accuracy } = props;
